@@ -5,7 +5,7 @@ import StaffLayout from "./layouts/StaffLayout";
 import GuardLayout from "./layouts/GuardLayout";
 import Login from "./pages/customer/Login";
 import SignUp from "./pages/customer/SignUp";
-import ForgotPassword from ".pages/customer/ForgotPassword";
+import ForgotPassword from "./pages/customer/ForgotPassword";
 
 // customer
 import Home from "./pages/customer/Home";
