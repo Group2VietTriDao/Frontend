@@ -7,11 +7,15 @@
 
 /* Header */
 .header {
+  list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: #002244;
-  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 .logo {
@@ -41,22 +45,46 @@
   gap: 20px;
 }
 
-.nav-links a {
+.nav-links li > a {
+  position: relative;
   color: white;
   text-decoration: none;
   font-weight: bold;
+  line-height: 60px;
 }
 
-.nav-links a:hover {
+.nav-links li:hover .subnav{
+  display: block;
+}
+
+.nav-links li:hover > a,
+.nav-links .subnav li:hover {
   color: #34D5F9;
+}
+
+.nav-links .subnav {
+  display: none;
+  list-style: none;
+  line-height: 36px;
+  position: absolute;
+  top: 100%;
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
+  background-color: #0d1a56;
+  padding:0 10px;
+  margin: 0;
+}
+.nav-links .subnav a{
+  line-height: 36px;
 }
 
 .profile {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .iconsBTN {
+  
   display: flex;
   gap: 5px;
   margin-right: 5px; /* Adjust the margin as needed */
@@ -80,6 +108,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  
 }
 
 .profile img {
@@ -87,9 +116,90 @@
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
+  
+}
+.iconsBTN {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
-/* Footer */
+.search-box {
+  position: absolute;
+  top: 50%; 
+  left: -30%;
+  margin-right: 10px;
+  transform: translateY(80%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+
+
+}
+.search-box input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.search-box button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #002244;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: #34D5F9;
+}
+
+.notifications-dropdown ul{
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #F2F1FE;
+  color: black;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  line-height: 36px;
+}
+.notifications-dropdown ul li:hover{
+  color: #34D5F9;
+}
+
+.Profile-dropdown ul{
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  list-style: none;
+  background-color: #F2F1FE;
+  color: black;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  line-height: 36px;
+}
+.Profile-dropdown ul li:hover{
+  color: #34D5F9;
+}
+
+.Profile-dropdown i{
+  padding-right: 10px;
+}
+
+
 .customer-layout {
   display: flex;
   flex-direction: column;
@@ -100,13 +210,18 @@ main {
   flex: 1;
 }
 
+/* Footer */
+
 .footer {
+  width: 100%;
   background-color: #0d1a56;
   color: white;
   padding: 20px 0;
+
 }
 
 .footer-content {
+  
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
@@ -226,17 +341,59 @@ main {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 60px; /* Tăng khoảng cách giữa các liên kết và phần trên */
+    margin-top: 10px; /* Tăng khoảng cách giữa các liên kết và phần trên */
     gap: 15px;
   }
 
-  .nav-links a {
+  .nav-links li {
+    position: relative;
     font-size: 16px;
     padding: 10px 0;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #ccc;
   }
+  .nav-links .subnav{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    z-index: 1;
+  }
+  .search-box{
+    top: 50%;
+    left: auto;
+    right: -250%;
+    line-height: 30px;
+  }
+  .notifications-dropdown ul,
+  .Profile-dropdown ul {
+    top: 40px;
+    left: auto;
+    right: 10px;
+    width: 180px;
+    line-height: 30px;
+  }
+
+  .notifications-dropdown ul li,
+  .Profile-dropdown ul li {
+    font-size: 14px;
+  }
+
+  .notifications-dropdown ul li:active{
+    background-color: rgb(0, 0, 0, 0.5); /* Màu nền khi click */
+    color: white; /* Màu chữ khi click */
+ 
+    transform: scale(0.98);
+  }
+  
+  .Profile-dropdown ul li:active{
+    background-color: rgb(0, 0, 0, 0.5); /* Màu nền khi click */
+    color: white; /* Màu chữ khi click */
+ 
+    transform: scale(0.98);
+  }
+  
+
 }
 
 @media (max-width: 480px) {

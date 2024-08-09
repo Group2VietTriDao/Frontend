@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./CustomerLayout.css"; // Import file CSS cho layout
 
 const CustomerLayout = () => {
+  const [isSearchBoxVisible, setSearchBoxVisible] = useState(false);
+  const [isNotificationsVisible, setNotificationsVisible] = useState(false);
+  const [isProfileVisible, setProfileVisible] = useState(false);
+
+  const handleSearchClick = () => {
+    setSearchBoxVisible(!isSearchBoxVisible);
+    setNotificationsVisible(false); // Đóng hộp thông báo nếu đang mở
+    setProfileVisible(false);
+  };
+
+  const handleNotificationClick = () => {
+    setNotificationsVisible(!isNotificationsVisible);
+    setSearchBoxVisible(false); // Đóng hộp tìm kiếm nếu đang mở
+    setProfileVisible(false);
+  };
+
+  const handleProfileClick = () => {
+    setProfileVisible(!isProfileVisible);
+    setSearchBoxVisible(false);
+    setNotificationsVisible(false);
+  };
+
   return (
     <div className="customer-layout">
       <header className="header">
@@ -13,25 +35,110 @@ const CustomerLayout = () => {
           </Link>
         </div>
         <nav className="nav-links">
-          <Link to="/home">HOME</Link>
-          <Link to="/services">SERVICES</Link>
-          <Link to="/resources">RESOURCES</Link>
-          <Link to="/offices">OFFICES</Link>
-          <Link to="/about-us">ABOUT US</Link>
-          <Link to="/careers">CAREERS</Link>
+          <li>
+            <Link to="#">HOME</Link>
+          </li>
+          <li>
+            <Link to="#">SERVICES</Link>
+            <ul className="subnav">
+              <li>
+                <a href="">Commercial Security</a>
+              </li>
+              <li>
+                <a href="">Event Security</a>
+              </li>
+              <li>
+                <a href="">Aviation Security</a>
+              </li>
+              <li>
+                <a href="">Transportation Security</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Link to="#">RESOURCES</Link>
+            <ul className="subnav">
+              <li>
+                <a href="">All Resources</a>
+              </li>
+              <li>
+                <a href="">eBooks & White Papers</a>
+              </li>
+              <li>
+                <a href="">On - Demand Webianars</a>
+              </li>
+              <li>
+                <a href="">Safety & Security Insights</a>
+              </li>
+              <li>
+                <a href="">Tools & Templates</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <Link to="#">OFFICES</Link>
+          </li>
+          <li>
+            <Link to="#">ABOUT US</Link>
+          </li>
+          <li>
+            <Link to="#">CAREERS</Link>
+          </li>
         </nav>
         <div className="profile">
           <div className="iconsBTN">
-            <Link to="#">
+            <Link to="#" onClick={handleSearchClick}>
               <i className="ti-search"></i>
+              {/* Hộp tìm kiếm */}
+              {isSearchBoxVisible && (
+                <div className="search-box">
+                  <input type="text" placeholder="Search..." />
+                  <button>Search</button>
+                </div>
+              )}
             </Link>
-            <Link to="#">
+
+            <Link to="#" onClick={handleNotificationClick}>
               <i className="ti-bell"></i>
+              {/* Danh sách thông báo */}
+              {isNotificationsVisible && (
+                <div className="notifications-dropdown">
+                  <ul>
+                    <li>Notification 1</li>
+                    <li>Notification 2</li>
+                    <li>Notification 3</li>
+                    {/* Thêm các thông báo khác */}
+                  </ul>
+                </div>
+              )}
             </Link>
           </div>
           <div>
-            <Link to="#">
+            <Link to="#" onClick={handleProfileClick}>
               <img src="/avatar111.jpg" alt="Profile" />
+              {/* Trang cá nhân */}
+              {isProfileVisible && (
+                <div className="Profile-dropdown">
+                  <ul>
+                    <li>
+                      <i class="fa-solid fa-user"></i>
+                      Profile
+                    </li>
+                    <li>
+                      <i class="fa-regular fa-square-plus"></i>
+                      New Service Requiment
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-clock-rotate-left"></i>
+                      History
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+              )}
             </Link>
           </div>
         </div>
