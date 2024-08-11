@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./CustomerLayout.css"; // Import file CSS cho layout
+import SidebarCustomer from '../components/SidebarCustomer';
 
 const CustomerLayout = () => {
   return (
@@ -36,10 +37,10 @@ const CustomerLayout = () => {
           </div>
         </div>
       </header>
-
-      <main>
+      <div className='grid grid-cols-4'>
+        <SidebarCustomer />
         <Outlet />
-      </main>
+      </div>
 
       <footer className="footer">
         <div className="footer-content">
