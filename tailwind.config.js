@@ -323,6 +323,8 @@ module.exports = {
         '"Courier New"',
         'monospace',
       ],
+      popins: ['Poppins', 'ui-sans-serif'],
+      roboto: ['Roboto', 'ui-sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
