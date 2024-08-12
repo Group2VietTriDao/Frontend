@@ -194,7 +194,7 @@ const CustomerLayout = () => {
           </div>
         </div>
       </header>
-      <main className='grid grid-cols-4'>
+      <main className='grid grid-cols-4 my-10'>
         <SidebarCustomer />
         <Outlet />
       </main>
