@@ -1,5 +1,5 @@
 /* General */
-* {
+:global(*) {
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
@@ -29,23 +29,23 @@
   align-items: center;
 }
 
-.logo a {
-  display: flex; /* Ensure link also uses flex to align items inside */
-  align-items: center; /* Align items vertically */
+.logoLink {
+  display: flex;
+  align-items: center;
   font-weight: bold;
   color: white;
   text-decoration: none;
 }
-.logo a:hover{
+.logoLink:hover {
   color: #34D5F9;
 }
 
-.nav-links {
+.navLinks {
   display: flex;
   gap: 20px;
 }
 
-.nav-links li > a {
+.navLink {
   position: relative;
   color: white;
   text-decoration: none;
@@ -53,16 +53,7 @@
   line-height: 60px;
 }
 
-.nav-links li:hover .subnav{
-  display: block;
-}
-
-.nav-links li:hover > a,
-.nav-links .subnav li:hover {
-  color: #34D5F9;
-}
-
-.nav-links .subnav {
+.subnav {
   display: none;
   list-style: none;
   line-height: 36px;
@@ -70,12 +61,21 @@
   top: 100%;
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
   background-color: #0d1a56;
-  padding:0 10px;
+  color: white ;
+  padding: 0 10px;
   margin: 0;
 }
-.nav-links .subnav a{
-  line-height: 36px;
+
+.navLinkItem:hover .subnav {
+  display: block;
 }
+
+.navLink:hover,
+.subnavLink:hover,
+.navLinkItem:hover .navLink {
+  color: #34D5F9;
+}
+
 
 .profile {
   display: flex;
@@ -84,68 +84,62 @@
 }
 
 .iconsBTN {
-  
   display: flex;
   gap: 5px;
-  margin-right: 5px; /* Adjust the margin as needed */
+  margin-right: 5px;
   align-items: center;
-  
+  padding: 0 20px;
 }
 
-.iconsBTN a {
+.iconsLink {
   color: white;
   font-size: 21px;
   text-decoration: none;
-  padding-top: 10px;;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.iconsBTN a:hover{
+.iconsLink:hover {
   color: #34D5F9;
 }
 
-.profile a {
+.profileLink {
   display: block;
   position: relative;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  
 }
 
-.profile img {
+.profileImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  
-}
-.iconsBTN {
-  display: flex;
-  gap: 5px;
-  align-items: center;
 }
 
-.search-box {
+.searchBox {
   position: absolute;
-  top: 50%; 
+  top: 50%;
   left: -30%;
   margin-right: 10px;
-  transform: translateY(80%);
+  transform: translateX(-15%);
+  margin-top: 20%;
   background-color: white;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
-
-
 }
-.search-box input {
+
+.searchInput {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
 
-.search-box button {
+.searchButton {
   padding: 5px 10px;
   border: none;
   background-color: #002244;
@@ -154,14 +148,33 @@
   cursor: pointer;
 }
 
-.search-box button:hover {
+.searchButton:hover {
   background-color: #34D5F9;
 }
 
-.notifications-dropdown ul{
+.notificationsDropdown {
   list-style: none;
   position: absolute;
-  top: 100%;
+  top: 125%;
+  left:45%;
+  background-color: #F2F1FE;
+  color: black;
+  width: 150px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  line-height: 36px;
+}
+
+.notificationItem:hover {
+  color: #34D5F9;
+}
+
+.profileDropdown {
+  list-style: none;
+  position: absolute;
+  top: 125%;
   left: 0;
   background-color: #F2F1FE;
   color: black;
@@ -172,106 +185,83 @@
   cursor: pointer;
   line-height: 36px;
 }
-.notifications-dropdown ul li:hover{
+
+.profileDropdownItem:hover {
   color: #34D5F9;
 }
 
-.Profile-dropdown ul{
-  list-style: none;
-  position: absolute;
-  top: 100%;
-  left: 0%;
-  list-style: none;
-  background-color: #F2F1FE;
-  color: black;
-  width: 150px;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  line-height: 36px;
-}
-.Profile-dropdown ul li:hover{
-  color: #34D5F9;
-}
-
-.Profile-dropdown i{
+.profileIcon {
   padding-right: 10px;
 }
 
-
-.customer-layout {
+.customerLayout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-main {
+.mainContent {
   flex: 1;
 }
 
 /* Footer */
-
 .footer {
   width: 100%;
   background-color: #0d1a56;
   color: white;
   padding: 20px 0;
-
 }
 
-.footer-content {
-  
+.footerContent {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
   flex-wrap: wrap;
 }
 
-.footer-section {
+.footerSection {
   margin: 20px;
   flex: 1;
   min-width: 200px;
 }
 
-.footer-section h3 {
+.footerTitle {
   margin-bottom: 10px;
 }
 
-.footer-section ul {
+.footerList {
   list-style: none;
   padding: 0;
 }
 
-.footer-section ul li {
+.footerListItem {
   margin-bottom: 8px;
 }
 
-.footer-section ul li a {
+.footerLink {
   color: white;
   text-decoration: none;
 }
-
-.footer-section ul li a:hover {
+.footerLink:hover {
   color: #34D5F9;
 }
 
-.social-links {
+.socialLinks {
   display: flex;
   list-style: none;
   padding: 0;
 }
 
-.social-links li {
+.socialLinkItem {
   margin-right: 10px;
 }
 
-.social-links li a {
+.socialLink {
   color: white;
   font-size: 20px;
 }
 
-.footer-bottom {
+.footerBottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -279,11 +269,11 @@ main {
   padding: 10px 20px;
 }
 
-.language-selector {
+.languageSelector {
   position: relative;
 }
 
-.language-selector button {
+.languageButton {
   background-color: #e14b4b;
   color: white;
   border: none;
@@ -291,10 +281,9 @@ main {
   cursor: pointer;
 }
 
-.language-selector button:hover {
+.languageButton:hover {
   background-color: #c23939;
 }
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -306,7 +295,7 @@ main {
   }
 
   .logo {
-    align-self: flex-start; /* Giữ logo bên trái */
+    align-self: flex-start;
   }
 
   .profile {
@@ -314,86 +303,69 @@ main {
     top: 10px;
     right: 10px;
     display: flex;
-    align-items: center ;
+    align-items: center;
   }
 
-  .iconsBTN a {
+  .iconsLink {
     font-size: 18px;
     padding: 10px 10px;
     align-items: center;
   }
 
-  .profile a {
+  .profileLink {
     width: 35px;
     height: 35px;
   }
 
-  .profile img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid white; /* Thêm viền trắng cho ảnh profile */
+  .profileImage {
+    border: 2px solid white;
   }
 
-  .nav-links {
-    display: flex;
+  .navLinks {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 10px; /* Tăng khoảng cách giữa các liên kết và phần trên */
+    margin-top: 10px;
     gap: 15px;
   }
 
-  .nav-links li {
-    position: relative;
+  .navLinkItem {
     font-size: 16px;
     padding: 10px 0;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #ccc;
   }
-  .nav-links .subnav{
-    position: absolute;
-    top: 100%;
+
+  .subnav {
     left: 50%;
     z-index: 1;
   }
-  .search-box{
-    top: 50%;
-    left: auto;
+
+  .searchBox {
     right: -250%;
     line-height: 30px;
   }
-  .notifications-dropdown ul,
-  .Profile-dropdown ul {
+
+  .notificationsDropdown,
+  .profileDropdown {
     top: 40px;
-    left: auto;
     right: 10px;
     width: 180px;
     line-height: 30px;
   }
 
-  .notifications-dropdown ul li,
-  .Profile-dropdown ul li {
+  .notificationItem,
+  .profileDropdownItem {
     font-size: 14px;
   }
 
-  .notifications-dropdown ul li:active{
-    background-color: rgb(0, 0, 0, 0.5); /* Màu nền khi click */
-    color: white; /* Màu chữ khi click */
- 
+  .notificationItem:active,
+  .profileDropdownItem:active {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
     transform: scale(0.98);
   }
-  
-  .Profile-dropdown ul li:active{
-    background-color: rgb(0, 0, 0, 0.5); /* Màu nền khi click */
-    color: white; /* Màu chữ khi click */
- 
-    transform: scale(0.98);
-  }
-  
-
 }
 
 @media (max-width: 480px) {
@@ -405,27 +377,22 @@ main {
     height: 30px;
   }
 
-  .nav-links a {
+  .navLink {
     font-size: 14px;
   }
 
-  .profile a {
+  .profileLink {
     width: 30px;
     height: 30px;
   }
 
-  .iconsBTN a {
+  .iconsLink {
     font-size: 15px;
-    padding: 5px 0px;
+    padding: 5px 0;
     align-items: center;
   }
 
-  .profile img {
+  .profileImage {
     border: 1px solid white;
   }
 }
-
-
-
-
-

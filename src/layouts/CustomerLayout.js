@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import "./CustomerLayout.css"; // Import file CSS cho layout
+import clsx from "clsx";
+
+import style from "./CustomerLayout.module.css";
 
 const CustomerLayout = () => {
   const [isSearchBoxVisible, setSearchBoxVisible] = useState(false);
@@ -26,87 +28,129 @@ const CustomerLayout = () => {
   };
 
   return (
-    <div className="customer-layout">
-      <header className="header">
-        <div className="logo">
-          <Link to="/">
-            <img className="logo-img" src="/logo.png" alt="Logo" />
+    <div className={style.customerLayout}>
+      <header className={style.header}>
+        <div className={clsx(style.logo)}>
+          <Link to="/" className={style.logoLink}>
+            <img className={style.logoImg} src="/logo.png" alt="Logo" />
             BODYGUARD
           </Link>
         </div>
-        <nav className="nav-links">
-          <li>
-            <Link to="#">HOME</Link>
+        <nav className={style.navLinks}>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              HOME
+            </Link>
           </li>
-          <li>
-            <Link to="#">SERVICES</Link>
-            <ul className="subnav">
+          <li className={style.navLinkItem}>
+            <Link to="#" className={clsx(style.navLink)}>
+              SERVICES
+            </Link>
+            <ul className={style.subnav}>
               <li>
-                <a href="">Commercial Security</a>
+                <a href="#" className={style.subnavLink}>
+                  Commercial Security
+                </a>
               </li>
               <li>
-                <a href="">Event Security</a>
+                <a href="#" className={style.subnavLink}>
+                  Event Security
+                </a>
               </li>
               <li>
-                <a href="">Aviation Security</a>
+                <a href="#" className={style.subnavLink}>
+                  Aviation Security
+                </a>
               </li>
               <li>
-                <a href="">Transportation Security</a>
+                <a href="#" className={style.subnavLink}>
+                  Transportation Security
+                </a>
               </li>
             </ul>
           </li>
-          <li>
-            <Link to="#">RESOURCES</Link>
-            <ul className="subnav">
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              RESOURCES
+            </Link>
+            <ul className={style.subnav}>
               <li>
-                <a href="">All Resources</a>
+                <a href="#" className={style.subnavLink}>
+                  All Resources
+                </a>
               </li>
               <li>
-                <a href="">eBooks & White Papers</a>
+                <a href="#" className={style.subnavLink}>
+                  eBooks & White Papers
+                </a>
               </li>
               <li>
-                <a href="">On - Demand Webianars</a>
+                <a href="#" className={style.subnavLink}>
+                  On - Demand Webinars
+                </a>
               </li>
               <li>
-                <a href="">Safety & Security Insights</a>
+                <a href="#" className={style.subnavLink}>
+                  Safety & Security Insights
+                </a>
               </li>
               <li>
-                <a href="">Tools & Templates</a>
+                <a href="#" className={style.subnavLink}>
+                  Tools & Templates
+                </a>
               </li>
             </ul>
           </li>
-          <li>
-            <Link to="#">OFFICES</Link>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              OFFICES
+            </Link>
           </li>
-          <li>
-            <Link to="#">ABOUT US</Link>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              ABOUT US
+            </Link>
           </li>
-          <li>
-            <Link to="#">CAREERS</Link>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              CAREERS
+            </Link>
           </li>
         </nav>
-        <div className="profile">
-          <div className="iconsBTN">
-            <Link to="#" onClick={handleSearchClick}>
+        <div className={style.profile}>
+          <div className={style.iconsBTN}>
+            <Link
+              to="#"
+              onClick={handleSearchClick}
+              className={style.iconsLink}
+            >
               <i className="ti-search"></i>
               {/* Hộp tìm kiếm */}
               {isSearchBoxVisible && (
-                <div className="search-box">
-                  <input type="text" placeholder="Search..." />
-                  <button>Search</button>
+                <div className={style.searchBox}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className={style.searchInput}
+                  />
+                  <button className={style.searchButton}>Search</button>
                 </div>
               )}
             </Link>
 
-            <Link to="#" onClick={handleNotificationClick}>
+            <Link
+              to="#"
+              onClick={handleNotificationClick}
+              className={style.iconsLink}
+            >
               <i className="ti-bell"></i>
               {/* Danh sách thông báo */}
               {isNotificationsVisible && (
-                <div className="notifications-dropdown">
+                <div className={style.notificationsDropdown}>
                   <ul>
-                    <li>Notification 1</li>
-                    <li>Notification 2</li>
-                    <li>Notification 3</li>
+                    <li className={style.notificationItem}>Notification 1</li>
+                    <li className={style.notificationItem}>Notification 2</li>
+                    <li className={style.notificationItem}>Notification 3</li>
                     {/* Thêm các thông báo khác */}
                   </ul>
                 </div>
@@ -114,26 +158,34 @@ const CustomerLayout = () => {
             </Link>
           </div>
           <div>
-            <Link to="#" onClick={handleProfileClick}>
-              <img src="/avatar111.jpg" alt="Profile" />
+            <Link
+              to="#"
+              onClick={handleProfileClick}
+              className={style.profileLink}
+            >
+              <img
+                src="/avatar111.jpg"
+                alt="Profile"
+                className={style.profileImage}
+              />
               {/* Trang cá nhân */}
               {isProfileVisible && (
-                <div className="Profile-dropdown">
+                <div className={style.profileDropdown}>
                   <ul>
-                    <li>
-                      <i class="fa-solid fa-user"></i>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-user"></i>
                       Profile
                     </li>
-                    <li>
-                      <i class="fa-regular fa-square-plus"></i>
-                      New Service Requiment
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-regular fa-square-plus"></i>
+                      New Service Requirement
                     </li>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-clock-rotate-left"></i>
                       History
                     </li>
-                    <li>
-                      <i class="fa-solid fa-right-from-bracket"></i>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-right-from-bracket"></i>
                       Logout
                     </li>
                   </ul>
@@ -144,88 +196,106 @@ const CustomerLayout = () => {
         </div>
       </header>
 
-      <main>
+      <main className={style.mainContent}>
         <Outlet />
       </main>
 
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <div className="logo">
-              <Link to="#">
-                <img className="logo-img" src="/logo.png" alt="Logo" />
+      <footer className={style.footer}>
+        <div className={style.footerContent}>
+          <div className={style.footerSection}>
+            <div className={style.logo}>
+              <Link to="#" className={style.logoLink}>
+                <img className={style.logoImg} src="/logo.png" alt="Logo" />
                 BODYGUARD
               </Link>
             </div>
             <p>Professional protection, every step of the way</p>
           </div>
-          <div className="footer-section">
-            <h3>Need Help ?</h3>
-            <ul>
-              <li>
-                <Link to="#">Advanced Search</Link>
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Need Help?</h3>
+            <ul className={style.footerList}>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Advanced Search
+                </Link>
               </li>
-              <li>
-                <Link to="#">Pricing</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Pricing
+                </Link>
               </li>
-              <li>
-                <Link to="#">VPAT (PDF)</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  VPAT (PDF)
+                </Link>
               </li>
-              <li>
-                <Link to="#">Financing</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h3>Company</h3>
-            <ul>
-              <li>
-                <Link to="#">About us</Link>
-              </li>
-              <li>
-                <Link to="#">Contact us</Link>
-              </li>
-              <li>
-                <Link to="#">FAQs</Link>
-              </li>
-              <li>
-                <Link to="#">Careers</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Financing
+                </Link>
               </li>
             </ul>
           </div>
-          <div className="footer-section">
-            <h3>Follow us</h3>
-            <ul className="social-links">
-              <li>
-                <Link to="#">
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Company</h3>
+            <ul className={style.footerList}>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  About us
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Contact us
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  FAQs
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Careers
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Follow us</h3>
+            <ul className={style.socialLinks}>
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-twitter"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-facebook"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-linkedin"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-youtube"></i>
                 </Link>
               </li>
             </ul>
-            <p>Alaska, United States</p>
-            <p>bodyguard@email.com</p>
-            <p>(205) 387-2122</p>
+            <p className={style.footerLocation}>Alaska, United States</p>
+            <p className={style.footerEmail}>bodyguard@email.com</p>
+            <p className={style.footerPhone}>(205) 387-2122</p>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>&copy; 2022 Brand, Inc. - Privacy · Terms · Sitemap</p>
-          <div className="language-selector">
-            <button>
+        <div className={style.footerBottom}>
+          <p className={style.footerCopy}>
+            &copy; 2022 Brand, Inc. - Privacy · Terms · Sitemap
+          </p>
+          <div className={style.languageSelector}>
+            <button className={style.languageButton}>
               English <i className="ti-angle-down"></i>
             </button>
           </div>
