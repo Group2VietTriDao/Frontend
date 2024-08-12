@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
-import { Link, useLocation, useParams, useSearchParams } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const infomations = [
   {
@@ -16,41 +16,41 @@ const infomations = [
   },
   {
     name: 'Reset password',
-    link: '',
+    link: 'reset-password',
     icon: <FontAwesomeIcon icon="fa-solid fa-lock" />
   },
   {
     name: 'Service requiment',
-    link: '',
+    link: 'service-requiment',
     icon: <FontAwesomeIcon icon="fa-solid fa-wifi" />
   },
   {
     name: 'Contracts',
-    link: '',
+    link: 'contracts',
     icon: <FontAwesomeIcon icon="fa-regular fa-address-book" />
   },
   {
     name: 'Settings',
-    link: '',
+    link: 'settings',
     icon: <FontAwesomeIcon icon="fa-solid fa-gear" />
   },
   {
     name: 'log out',
-    link: '',
+    link: 'logout',
     icon: <FontAwesomeIcon icon="fa-solid fa-arrow-right-from-bracket" flip="horizontal" />
   },
 ]
 const ListSidebar = ({ name, icon, notification, link }) => {
-  const [param, setParam] = useState('')
+  const [focus, setFocus] = useState(false)
   const location = useLocation()
   useEffect(() => {
-    const getParam = location.pathname.split('/')
-    setParam(getParam[getParam.length - 1])
-  }, [location])
+    const params = location.pathname.split('/');
+    setFocus(params.includes(link))
+  }, [location, link])
   return (
     <>
       <div className='flex justify-between items-center'>
-        <Link to={link} className={`flex items-center space-x-4 ${param === link ? 'text-[#34D5F9]' : 'text-[#424955]'} hover:text-[#34D5F9] cursor-pointer my-2`}>
+        <Link to={link} className={`flex items-center space-x-4 ${focus ? 'text-[#34D5F9]' : 'text-[#424955]'} hover:text-[#34D5F9] cursor-pointer my-2`}>
           <div className='text-lg'>{icon}</div>
           <span className='text-sm'>{name}</span>
         </Link>

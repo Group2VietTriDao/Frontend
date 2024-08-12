@@ -36,6 +36,7 @@ function App() {
         <Route path="/customer" element={<CustomerLayout />}>
           <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="reset-password" element={<ResetPassword />} />
         </Route>
 
         {/* Guard */}
