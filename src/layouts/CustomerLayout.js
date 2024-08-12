@@ -1,125 +1,299 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import "./CustomerLayout.css"; // Import file CSS cho layout
 import SidebarCustomer from '../components/SidebarCustomer';
-
+import clsx from "clsx";
+import style from "./CustomerLayout.module.css";
 const CustomerLayout = () => {
+  const [isSearchBoxVisible, setSearchBoxVisible] = useState(false);
+  const [isNotificationsVisible, setNotificationsVisible] = useState(false);
+  const [isProfileVisible, setProfileVisible] = useState(false);
+
+  const handleSearchClick = () => {
+    setSearchBoxVisible(!isSearchBoxVisible);
+    setNotificationsVisible(false); // Đóng hộp thông báo nếu đang mở
+    setProfileVisible(false);
+  };
+
+  const handleNotificationClick = () => {
+    setNotificationsVisible(!isNotificationsVisible);
+    setSearchBoxVisible(false); // Đóng hộp tìm kiếm nếu đang mở
+    setProfileVisible(false);
+  };
+
+  const handleProfileClick = () => {
+    setProfileVisible(!isProfileVisible);
+    setSearchBoxVisible(false);
+    setNotificationsVisible(false);
+  };
+
   return (
-    <div className="customer-layout">
-      <header className="header">
-        <div className="logo">
-          <Link to="/">
-            <img className="logo-img" src="/logo.png" alt="Logo" />
+    <div className={style.customerLayout}>
+      <header className={style.header}>
+        <div className={clsx(style.logo)}>
+          <Link to="/" className={style.logoLink}>
+            <img className={style.logoImg} src="/logo.png" alt="Logo" />
             BODYGUARD
           </Link>
         </div>
-        <nav className="nav-links">
-          <Link to="/home">HOME</Link>
-          <Link to="/services">SERVICES</Link>
-          <Link to="/resources">RESOURCES</Link>
-          <Link to="/offices">OFFICES</Link>
-          <Link to="/about-us">ABOUT US</Link>
-          <Link to="/careers">CAREERS</Link>
-        </nav>
-        <div className="profile">
-          <div className="iconsBTN">
-            <Link to="#">
-              <i className="ti-search"></i>
+        <nav className={style.navLinks}>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              HOME
             </Link>
-            <Link to="#">
+          </li>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={clsx(style.navLink)}>
+              SERVICES
+            </Link>
+            <ul className={style.subnav}>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Commercial Security
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Event Security
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Aviation Security
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Transportation Security
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              RESOURCES
+            </Link>
+            <ul className={style.subnav}>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  All Resources
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  eBooks & White Papers
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  On - Demand Webinars
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Safety & Security Insights
+                </a>
+              </li>
+              <li>
+                <a href="#" className={style.subnavLink}>
+                  Tools & Templates
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              OFFICES
+            </Link>
+          </li>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              ABOUT US
+            </Link>
+          </li>
+          <li className={style.navLinkItem}>
+            <Link to="#" className={style.navLink}>
+              CAREERS
+            </Link>
+          </li>
+        </nav>
+        <div className={style.profile}>
+          <div className={style.iconsBTN}>
+            <Link
+              to="#"
+              onClick={handleSearchClick}
+              className={style.iconsLink}
+            >
+              <i className="ti-search"></i>
+              {/* Hộp tìm kiếm */}
+              {isSearchBoxVisible && (
+                <div className={style.searchBox}>
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className={style.searchInput}
+                  />
+                  <button className={style.searchButton}>Search</button>
+                </div>
+              )}
+            </Link>
+
+            <Link
+              to="#"
+              onClick={handleNotificationClick}
+              className={style.iconsLink}
+            >
               <i className="ti-bell"></i>
+              {/* Danh sách thông báo */}
+              {isNotificationsVisible && (
+                <div className={style.notificationsDropdown}>
+                  <ul>
+                    <li className={style.notificationItem}>Notification 1</li>
+                    <li className={style.notificationItem}>Notification 2</li>
+                    <li className={style.notificationItem}>Notification 3</li>
+                    {/* Thêm các thông báo khác */}
+                  </ul>
+                </div>
+              )}
             </Link>
           </div>
           <div>
-            <Link to="#">
-              <img src="/avatar111.jpg" alt="Profile" />
+            <Link
+              to="#"
+              onClick={handleProfileClick}
+              className={style.profileLink}
+            >
+              <img
+                src="/avatar111.jpg"
+                alt="Profile"
+                className={style.profileImage}
+              />
+              {/* Trang cá nhân */}
+              {isProfileVisible && (
+                <div className={style.profileDropdown}>
+                  <ul>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-user"></i>
+                      Profile
+                    </li>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-regular fa-square-plus"></i>
+                      New Service Requirement
+                    </li>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-clock-rotate-left"></i>
+                      History
+                    </li>
+                    <li className={style.profileDropdownItem}>
+                      <i className="fa-solid fa-right-from-bracket"></i>
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+              )}
             </Link>
           </div>
         </div>
       </header>
-      <div className='grid grid-cols-4'>
+      <main className='grid grid-cols-4'>
         <SidebarCustomer />
         <Outlet />
-      </div>
-
-      <footer className="footer">
-        <div className="footer-content">
-          <div className="footer-section">
-            <div className="logo">
-              <Link to="#">
-                <img className="logo-img" src="/logo.png" alt="Logo" />
+      </main>
+      <footer className={style.footer}>
+        <div className={style.footerContent}>
+          <div className={style.footerSection}>
+            <div className={style.logo}>
+              <Link to="#" className={style.logoLink}>
+                <img className={style.logoImg} src="/logo.png" alt="Logo" />
                 BODYGUARD
               </Link>
             </div>
             <p>Professional protection, every step of the way</p>
           </div>
-          <div className="footer-section">
-            <h3>Need Help ?</h3>
-            <ul>
-              <li>
-                <Link to="#">Advanced Search</Link>
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Need Help?</h3>
+            <ul className={style.footerList}>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Advanced Search
+                </Link>
               </li>
-              <li>
-                <Link to="#">Pricing</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Pricing
+                </Link>
               </li>
-              <li>
-                <Link to="#">VPAT (PDF)</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  VPAT (PDF)
+                </Link>
               </li>
-              <li>
-                <Link to="#">Financing</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-section">
-            <h3>Company</h3>
-            <ul>
-              <li>
-                <Link to="#">About us</Link>
-              </li>
-              <li>
-                <Link to="#">Contact us</Link>
-              </li>
-              <li>
-                <Link to="#">FAQs</Link>
-              </li>
-              <li>
-                <Link to="#">Careers</Link>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Financing
+                </Link>
               </li>
             </ul>
           </div>
-          <div className="footer-section">
-            <h3>Follow us</h3>
-            <ul className="social-links">
-              <li>
-                <Link to="#">
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Company</h3>
+            <ul className={style.footerList}>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  About us
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Contact us
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  FAQs
+                </Link>
+              </li>
+              <li className={style.footerListItem}>
+                <Link to="#" className={style.footerLink}>
+                  Careers
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className={style.footerSection}>
+            <h3 className={style.footerTitle}>Follow us</h3>
+            <ul className={style.socialLinks}>
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-twitter"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-facebook"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-linkedin"></i>
                 </Link>
               </li>
-              <li>
-                <Link to="#">
+              <li className={style.socialLinkItem}>
+                <Link to="#" className={style.socialLink}>
                   <i className="ti-youtube"></i>
                 </Link>
               </li>
             </ul>
-            <p>Alaska, United States</p>
-            <p>bodyguard@email.com</p>
-            <p>(205) 387-2122</p>
+            <p className={style.footerLocation}>Alaska, United States</p>
+            <p className={style.footerEmail}>bodyguard@email.com</p>
+            <p className={style.footerPhone}>(205) 387-2122</p>
           </div>
         </div>
-        <div className="footer-bottom">
-          <p>&copy; 2022 Brand, Inc. - Privacy · Terms · Sitemap</p>
-          <div className="language-selector">
-            <button>
+        <div className={style.footerBottom}>
+          <p className={style.footerCopy}>
+            &copy; 2022 Brand, Inc. - Privacy · Terms · Sitemap
+          </p>
+          <div className={style.languageSelector}>
+            <button className={style.languageButton}>
               English <i className="ti-angle-down"></i>
             </button>
           </div>
