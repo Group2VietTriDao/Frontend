@@ -14,9 +14,9 @@ import ForgotPassword from "./pages/customer/ForgotPassword";
 import Home from "./pages/customer/Home";
 import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
-import ServiceRequiment from "./pages/customer/ServiceRequiment";
-import NewServiceRequiment from "./pages/customer/NewServiceRequiment";
-import ViewAndEditServiceRequiment from "./pages/customer/ViewAndEditServiceRequiment";
+import ServiceRequirement from "./pages/customer/ServiceRequirement";
+import NewServiceRequirement from "./pages/customer/NewServiceRequirement";
+import ViewAndEditServiceRequirement from "./pages/customer/ViewAndEditServiceRequirement";
 import Contract from "./pages/customer/Contracts";
 import ViewContract from "./pages/customer/ViewContract";
 import ViewTeamContract from "./pages/customer/ViewTeamContract";
@@ -29,6 +29,7 @@ import StaffContract from "./pages/staff/Contract";
 import ContractAssign from "./pages/staff/ContractAssign";
 import ManageContracts from "./pages/staff/ManageContracts";
 import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
+import NotFound from "./components/NotFound"; // Thêm component 404
 
 function App() {
   return (
@@ -38,17 +39,30 @@ function App() {
         <Route path="/customer" element={<CustomerLayout />}>
           <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
+          <Route
+            path="newServiceRequirement"
+            element={<NewServiceRequirement />}
+          />
+          <Route
+            path="viewAndEditServiceRequirement"
+            element={<ViewAndEditServiceRequirement />}
+          />
+          {/* Thêm các route khác cho customer ở đây */}
         </Route>
 
         {/* Guard */}
         <Route path="/guard" element={<GuardLayout />}>
-          <Route path="home" element={<Home />} />
+          <Route path="home" element={<HomeGuard />} />
         </Route>
 
         {/* Staff */}
         <Route path="/staff" element={<StaffLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
+          {/* Thêm các route khác cho staff ở đây */}
         </Route>
+
+        {/* Catch-All */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
