@@ -1,7 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "./icons/themify-icons-font/themify-icons/themify-icons.css";
 
 import CustomerLayout from "./layouts/CustomerLayout";
 import StaffLayout from "./layouts/StaffLayout";
@@ -48,6 +46,7 @@ function App() {
             element={<ViewAndEditServiceRequirement />}
           />
           {/* Thêm các route khác cho customer ở đây */}
+          <Route path="reset-password" element={<ResetPassword />} />
         </Route>
 
         {/* Guard */}

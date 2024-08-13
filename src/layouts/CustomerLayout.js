@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
+import SidebarCustomer from '../components/SidebarCustomer';
 import clsx from "clsx";
-
 import style from "./CustomerLayout.module.css";
-
 const CustomerLayout = () => {
   const [isSearchBoxVisible, setSearchBoxVisible] = useState(false);
   const [isNotificationsVisible, setNotificationsVisible] = useState(false);
@@ -195,11 +194,10 @@ const CustomerLayout = () => {
           </div>
         </div>
       </header>
-
-      <main className={style.mainContent}>
+      <main className='grid grid-cols-4 my-10'>
+        <SidebarCustomer />
         <Outlet />
       </main>
-
       <footer className={style.footer}>
         <div className={style.footerContent}>
           <div className={style.footerSection}>
