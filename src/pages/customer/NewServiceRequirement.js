@@ -25,7 +25,7 @@ const NewServiceRequirement = () => {
   };
 
   return (
-    <div>
+    <div className={styles.NewServiceRequirement}>
       <div className={styles.Profile}>
         <div className={styles.userDetails}>
           <img src="/avatar111.jpg" alt="User" className={styles.userImage} />

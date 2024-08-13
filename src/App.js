@@ -12,7 +12,7 @@ import ForgotPassword from "./pages/customer/ForgotPassword";
 import Home from "./pages/customer/Home";
 import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
-import ServiceRequirement from "./pages/customer/ServiceRequirement";
+// import ServiceRequirement from "./pages/customer/ServiceRequirement";
 import NewServiceRequirement from "./pages/customer/NewServiceRequirement";
 import ViewAndEditServiceRequirement from "./pages/customer/ViewAndEditServiceRequirement";
 import Contract from "./pages/customer/Contracts";
@@ -45,8 +45,8 @@ function App() {
             path="viewAndEditServiceRequirement"
             element={<ViewAndEditServiceRequirement />}
           />
-          {/* Thêm các route khác cho customer ở đây */}
           <Route path="reset-password" element={<ResetPassword />} />
+          {/* <Route path="serviceRequirement" element={<ServiceRequirement />} /> */}
         </Route>
 
         {/* Guard */}

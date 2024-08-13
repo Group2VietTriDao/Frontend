@@ -1,7 +1,11 @@
-.Profile {
+  .NewServiceRequirement{
+    width: 300%;
+  }
+  
+  .Profile {
     max-width: 600px;
     margin-top: 65px;
-    margin-left: 30%;
+    margin-left: 10%;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -44,7 +48,7 @@
   
   .container{
     max-width: 600px;
-    margin-left: 35%;
+    margin-left: 15%;
     margin-top: 10px;
     margin-bottom: 10px;
     align-items: center;
