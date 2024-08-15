@@ -11,7 +11,7 @@ const InputField = ({ ...props }) => {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           type={!showPassword ? 'password' : 'text'}
-          id='password' className='col-span-3 outline-none text-sm w-full py-1' placeholder='Enter Your Password' {...props} />
+          id='password' className='col-span-3 outline-none text-sm w-full py-1' placeholder='Enter Your Password' autoComplete='current-password' {...props} />
         {value && (
           <div className='w-8'>
             <FontAwesomeIcon
@@ -43,18 +43,21 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className='p-6 shadow-sm border'>
-            <form action="" className='flex flex-col space-y-5'>
+            <form hidden className='flex flex-col space-y-5'>
+              {/* fix warning: [DOM] Password forms should have (optionally hidden) username fields for accessibility */}
+              <input hidden type="text" autoComplete="username" disabled name='username' />
+              {/* ------------- */}
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="password" className='capitalize text-sm font-semibold text-[#424955]'>password</label>
-                <InputField />
+                <InputField name='password' />
               </div>
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="newPassword" className='capitalize text-sm font-semibold text-[#424955]'>new password</label>
-                <InputField id='newPassword' placeholder='Enter Your New Password' />
+                <InputField id='newPassword' placeholder='Enter Your New Password' name='newPassword' />
               </div>
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="confirmPassword" className='capitalize text-sm font-semibold text-[#424955]'>confirm new password</label>
-                <InputField id='confirmPassword' placeholder='Type New Password Again' />
+                <InputField id='confirmPassword' placeholder='Type New Password Again' name='confirmNewPassword' />
               </div>
 
               <div className='self-end'>

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import SidebarCustomer from '../../components/SidebarCustomer'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const EditProfile = ({ setEdit }) => {
   const handleSubmitProfile = () => {
@@ -11,23 +10,29 @@ const EditProfile = ({ setEdit }) => {
         <form className='flex flex-col p-2 space-y-6'>
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Name</span>
-            <input className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" />
+            <input
+              name='name'
+              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' autoComplete='name' type="text" />
           </div>
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Email</span>
             <input
               value='hairipi100@gmail.com'
-              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" />
+              name='email'
+              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' autoComplete='email' type="text" />
           </div>
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Date of birth</span>
-            <input className='px-2 col-span-3 max-w-96' type="date" />
+            <input
+              name='date'
+              className='px-2 col-span-3 max-w-96' type="date" autoComplete='bday-day' />
           </div>
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Address</span>
             <input
               value='1234 Elm Street, Springfield, IL 62704, USA'
-              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" />
+              name='address'
+              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" autoComplete='address-level1' />
           </div>
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Gender</span>
@@ -49,7 +54,8 @@ const EditProfile = ({ setEdit }) => {
           <div className='grid grid-cols-4'>
             <span className='col-span-1 self-center text-[#6E7787]'>Phone number</span>
             <input
-              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" />
+              name='phone'
+              className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm border' type="text" autoComplete='phone' />
           </div>
           <div className='self-end'>
             <button
@@ -96,33 +102,27 @@ const Profile = () => {
                 <form className='flex flex-col p-2 space-y-6'>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Name</span>
-                    <input className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm' disabled type="text" value='hai hhuy hoang' />
+                    <p className='col-span-3 text-sm'>hai hhuy hoang</p>
                   </div>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Email</span>
-                    <input
-                      value='hairipi100@gmail.com'
-                      className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm' disabled type="text" />
+                    <p className='col-span-3 text-sm'>hairipi100@gmail.com</p>
                   </div>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Date of birth</span>
-                    <input className='px-2 col-span-3 max-w-96' type="date" value='2024-04-06' disabled />
+                    <p className='col-span-3 text-sm'>2024-04-06</p>
                   </div>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Address</span>
-                    <input
-                      value='1234 Elm Street, Springfield, IL 62704, USA'
-                      className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm' type="text" disabled />
+                    <p className='col-span-3 text-sm'>1234 Elm Street, Springfield, IL 62704, USA</p>
                   </div>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Gender</span>
-                    <span className='text-sm px-2'>Male</span>
+                    <span className='text-sm col-span-3'>Male</span>
                   </div>
                   <div className='grid grid-cols-4'>
                     <span className='col-span-1 self-center text-[#6E7787]'>Phone number</span>
-                    <input
-                      value='(555) 123-4567'
-                      className='col-span-3 rounded-md py-1 px-2 max-w-96 outline-none border-solid text-sm' type="text" disabled />
+                    <span className='text-sm col-span-3'>(555) 123-4567</span>
                   </div>
                 </form>
               </div>
