@@ -27,6 +27,7 @@ import StaffContract from "./pages/staff/Contract";
 import ContractAssign from "./pages/staff/ContractAssign";
 import ManageContracts from "./pages/staff/ManageContracts";
 import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
+
 import NotFound from "./components/NotFound"; // Thêm component 404
 
 function App() {
@@ -57,6 +58,10 @@ function App() {
         {/* Staff */}
         <Route path="/staff" element={<StaffLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
+          <Route
+            path="manageServiceRequests"
+            element={<ManageServiceRequests />}
+          />
           {/* Thêm các route khác cho staff ở đây */}
         </Route>
 
