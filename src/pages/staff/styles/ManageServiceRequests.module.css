@@ -77,30 +77,30 @@
   padding: 5px 10px;
   border-radius: 3px;
   text-align: center;
+  
 }
 
 .status.incomplete {
   color: #98690C;
-  background-color: #FEF9EE;
-  border-radius: 40%;
+  background-color: #e9e7e3;
+  border-radius: 5px;
 }
 
 .status.completed {
   color: #117B34;
-  background-color: #EEFDF3;
-  border-radius: 40%;
+  background-color: #e1f0e6;
+  border-radius: 5px;
 }
 
 .status.inprogress{
   color: #379AE6;
-  background-color: #F1F8FD;
-  border-radius: 40%;
+  background-color: #dbe7ef;
+  border-radius: 5px;
 }
-
-.status.Pending{
+.status.pending{
   color: #000;
-  background-color: #b7c6eb;
-  border-radius: 40%;
+  background-color: #c4cad9;
+  border-radius: 5px;
 }
 
 .viewButton {
@@ -110,6 +110,9 @@
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
+}
+.viewButton:hover{
+  background-color: #9f4b39;
 }
 
 .pagination {
@@ -126,3 +129,5 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
+

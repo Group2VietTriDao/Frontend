@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./styles/ManageServiceRequests.module.css";
+import ServiceRequestInformation from "./ServiceRequestInformation";
 
 const ManageServiceRequests = () => {
   const initialData = [
@@ -10,7 +11,7 @@ const ManageServiceRequests = () => {
       status: "Incomplete",
       numberOfGuards: 75,
       category: "Personal Protection",
-      budget: "$804",
+      cost: "$804",
       startDate: "20/03/2024",
       endDate: "25/07/2022",
     },
@@ -21,7 +22,7 @@ const ManageServiceRequests = () => {
       status: "Incomplete",
       numberOfGuards: 80,
       category: "Personal Protection",
-      budget: "$573",
+      cost: "$573",
       startDate: "09/11/2021",
       endDate: "08/04/2021",
     },
@@ -32,7 +33,7 @@ const ManageServiceRequests = () => {
       status: "Completed",
       numberOfGuards: 45,
       category: "Event Security",
-      budget: "$1200",
+      cost: "$1200",
       startDate: "15/06/2022",
       endDate: "18/06/2022",
     },
@@ -43,7 +44,7 @@ const ManageServiceRequests = () => {
       status: "Pending",
       numberOfGuards: 100,
       category: "Corporate Security",
-      budget: "$1500",
+      cost: "$1500",
       startDate: "01/07/2023",
       endDate: "05/07/2023",
     },
@@ -54,7 +55,7 @@ const ManageServiceRequests = () => {
       status: "Incomplete",
       numberOfGuards: 60,
       category: "Residential Security",
-      budget: "$900",
+      cost: "$900",
       startDate: "10/08/2023",
       endDate: "15/08/2023",
     },
@@ -65,7 +66,7 @@ const ManageServiceRequests = () => {
       status: "Inprogress",
       numberOfGuards: 40,
       category: "Personal Protection",
-      budget: "$500",
+      cost: "$500",
       startDate: "25/04/2023",
       endDate: "28/04/2023",
     },
@@ -76,7 +77,7 @@ const ManageServiceRequests = () => {
       status: "Pending",
       numberOfGuards: 55,
       category: "Event Security",
-      budget: "$700",
+      cost: "$700",
       startDate: "14/09/2023",
       endDate: "18/09/2023",
     },
@@ -87,7 +88,7 @@ const ManageServiceRequests = () => {
       status: "Completed",
       numberOfGuards: 30,
       category: "Corporate Security",
-      budget: "$600",
+      cost: "$600",
       startDate: "05/10/2022",
       endDate: "07/10/2022",
     },
@@ -98,26 +99,18 @@ const ManageServiceRequests = () => {
       status: "Inprogress",
       numberOfGuards: 70,
       category: "Residential Security",
-      budget: "$850",
+      cost: "$850",
       startDate: "20/11/2023",
       endDate: "25/11/2023",
     },
-    {
-      id: 10,
-      customerID: 240,
-      customer: "Olivia Moore",
-      status: "Completed",
-      numberOfGuards: 35,
-      category: "Event Security",
-      budget: "$400",
-      startDate: "01/12/2022",
-      endDate: "03/12/2022",
-    },
-    // add more data here...
   ];
 
   const [data, setData] = useState(initialData);
   const [selectedIds, setSelectedIds] = useState([]);
+  const [selectedRequest, setSelectedRequest] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("All Status");
+  const [categoryFilter, setCategoryFilter] = useState("All Categories");
 
   const handleCheckboxChange = (id) => {
     setSelectedIds((prevSelectedIds) =>
@@ -134,6 +127,37 @@ const ManageServiceRequests = () => {
     console.log("Deleted IDs: ", selectedIds);
   };
 
+  const handleView = (request) => {
+    setSelectedRequest(request);
+  };
+
+  const handleSave = (updatedRequest) => {
+    // Update data with new information from modal
+    setData((prevData) =>
+      prevData.map((item) =>
+        item.id === updatedRequest.id ? updatedRequest : item
+      )
+    );
+    setSelectedRequest(null);
+  };
+
+  const filteredData = data.filter((item) => {
+    // Filter by customer name
+    const matchesSearchTerm = item.customer
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    // Filter by status
+    const matchesStatus =
+      statusFilter === "All Status" || item.status === statusFilter;
+
+    // Filter by service type
+    const matchesCategory =
+      categoryFilter === "All Categories" || item.category === categoryFilter;
+
+    return matchesSearchTerm && matchesStatus && matchesCategory;
+  });
+
   return (
     <div className={styles.pageContainer}>
       <div className={styles.header}>
@@ -145,20 +169,43 @@ const ManageServiceRequests = () => {
         <div className={styles.filters}>
           <input
             type="text"
-            placeholder=" Search task list"
+            placeholder="Search task list"
             className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <select className={styles.select}>
+          <select
+            className={styles.select}
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value)}
+          >
             <option>All Status</option>
             <option>Incomplete</option>
-            <option>Complete</option>
+            <option>Completed</option>
             <option>Inprogress</option>
             <option>Pending</option>
           </select>
-          <select className={styles.select}>
+          <select
+            className={styles.select}
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          >
             <option>All Categories</option>
+            <option>Personal Protection</option>
+            <option>Event Security</option>
+            <option>Corporate Security</option>
+            <option>Residential Security</option>
           </select>
-          <button className={styles.clearFiltersButton}>Clear Filters</button>
+          <button
+            className={styles.clearFiltersButton}
+            onClick={() => {
+              setSearchTerm("");
+              setStatusFilter("All Status");
+              setCategoryFilter("All Categories");
+            }}
+          >
+            Clear filters
+          </button>
         </div>
         <table className={styles.table}>
           <thead>
@@ -178,7 +225,7 @@ const ManageServiceRequests = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row) => (
+            {filteredData.map((row) => (
               <tr key={row.id}>
                 <td>
                   <input
@@ -204,7 +251,12 @@ const ManageServiceRequests = () => {
                 <td>{row.startDate}</td>
                 <td>{row.endDate}</td>
                 <td>
-                  <button className={styles.viewButton}>View</button>
+                  <button
+                    className={styles.viewButton}
+                    onClick={() => handleView(row)}
+                  >
+                    View
+                  </button>
                 </td>
               </tr>
             ))}
@@ -218,6 +270,15 @@ const ManageServiceRequests = () => {
           <button>&gt;</button>
         </div>
       </div>
+
+      {/* View Modal */}
+      {selectedRequest && (
+        <ServiceRequestInformation
+          request={selectedRequest}
+          onClose={() => setSelectedRequest(null)}
+          onSave={handleSave}
+        />
+      )}
     </div>
   );
 };
