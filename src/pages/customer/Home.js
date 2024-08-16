@@ -1,8 +1,10 @@
 import React from "react";
-import "./StyleHome.css"; // Import CSS cho trang Home
+import clsx from "clsx";
+
+import style from "./style/StyleHome.module.css"; // Import CSS cho trang Home
 
 const Home = () => {
-  return <div className="body"></div>;
+  return <div className={style.Home}></div>;
 };
 
 export default Home;

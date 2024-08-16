@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import SidebarCustomer from '../components/SidebarCustomer';
+import SidebarCustomer from "../components/SidebarCustomer";
 import clsx from "clsx";
 import style from "./CustomerLayout.module.css";
 
@@ -18,13 +18,13 @@ const CustomerLayout = () => {
 
   const handleSearchClick = () => {
     setSearchBoxVisible(!isSearchBoxVisible);
-    setNotificationsVisible(false); // Đóng hộp thông báo nếu đang mở
+    setNotificationsVisible(false);
     setProfileVisible(false);
   };
 
   const handleNotificationClick = () => {
     setNotificationsVisible(!isNotificationsVisible);
-    setSearchBoxVisible(false); // Đóng hộp tìm kiếm nếu đang mở
+    setSearchBoxVisible(false);
     setProfileVisible(false);
   };
 
@@ -132,7 +132,7 @@ const CustomerLayout = () => {
               className={style.iconsLink}
             >
               <i className="ti-search"></i>
-              {/* Hộp tìm kiếm */}
+              {/* Search box */}
               {isSearchBoxVisible && (
                 <div className={style.searchBox}>
                   <input
@@ -151,14 +151,13 @@ const CustomerLayout = () => {
               className={style.iconsLink}
             >
               <i className="ti-bell"></i>
-              {/* Danh sách thông báo */}
+              {/* Notification List */}
               {isNotificationsVisible && (
                 <div className={style.notificationsDropdown}>
                   <ul>
                     <li className={style.notificationItem}>Notification 1</li>
                     <li className={style.notificationItem}>Notification 2</li>
                     <li className={style.notificationItem}>Notification 3</li>
-                    {/* Thêm các thông báo khác */}
                   </ul>
                 </div>
               )}
@@ -175,7 +174,7 @@ const CustomerLayout = () => {
                 alt="Profile"
                 className={style.profileImage}
               />
-              {/* Trang cá nhân */}
+              {/* Profile Icons */}
               {isProfileVisible && (
                 <div className={style.profileDropdown}>
                   <ul>
@@ -202,7 +201,7 @@ const CustomerLayout = () => {
           </div>
         </div>
       </header>
-      <main className='grid grid-cols-4 my-10'>
+      <main className="grid grid-cols-4 my-10">
         <SidebarCustomer />
         <Outlet />
       </main>
