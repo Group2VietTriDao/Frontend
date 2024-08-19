@@ -1,17 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useState } from 'react'
 
-const InputField = ({ ...props }) => {
+export const PasswordField = ({ children, className, ...props }) => {
   const [showPassword, setShowPassword] = useState(false)
   const [value, setValue] = useState('')
   return (
     <>
-      <div className='border-solid border border-[#BCC1CA] rounded-md max-w-96 overflow-hidden flex justify-between items-center px-2'>
+      <div className={`border-solid border border-[#BCC1CA] rounded-md w-full min-w-80 overflow-hidden flex justify-between items-center px-2 ${className}`}>
+        {children}
         <input
           value={value}
           onChange={(e) => setValue(e.target.value)}
           type={!showPassword ? 'password' : 'text'}
-          id='password' className='col-span-3 outline-none text-sm w-full py-1' placeholder='Enter Your Password' {...props} />
+          id='password'
+          className='col-span-3 outline-none text-sm w-full py-1'
+          placeholder='Enter Your Password'
+          autoComplete='current-password'
+          {...props}
+        />
         {value && (
           <div className='w-8'>
             <FontAwesomeIcon
@@ -43,18 +49,21 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className='p-6 shadow-sm border'>
-            <form action="" className='flex flex-col space-y-5'>
+            <form hidden className='flex flex-col space-y-5'>
+              {/* fix warning: [DOM] Password forms should have (optionally hidden) username fields for accessibility */}
+              <input hidden type="text" autoComplete="username" disabled name='username' />
+              {/* ------------- */}
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="password" className='capitalize text-sm font-semibold text-[#424955]'>password</label>
-                <InputField />
+                <PasswordField name='password' />
               </div>
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="newPassword" className='capitalize text-sm font-semibold text-[#424955]'>new password</label>
-                <InputField id='newPassword' placeholder='Enter Your New Password' />
+                <PasswordField id='newPassword' placeholder='Enter Your New Password' name='newPassword' />
               </div>
               <div className='flex flex-col space-y-1'>
                 <label htmlFor="confirmPassword" className='capitalize text-sm font-semibold text-[#424955]'>confirm new password</label>
-                <InputField id='confirmPassword' placeholder='Type New Password Again' />
+                <PasswordField id='confirmPassword' placeholder='Type New Password Again' name='confirmNewPassword' />
               </div>
 
               <div className='self-end'>

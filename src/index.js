@@ -4,6 +4,7 @@ import App from "./App";
 import "./assets/icons/themify-icons.css";
 import "./index.css";
 
+// config fontawesome to use icon global instead use modular
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
