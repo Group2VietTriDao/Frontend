@@ -1,16 +1,9 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import SidebarCustomer from "../components/SidebarCustomer";
+import SidebarCustomer from "../../components/SidebarCustomer";
 import clsx from "clsx";
 import style from "./CustomerLayout.module.css";
 
-// Separate components to compact layout and avoid re-render unnecessary
-const HeaderLayout = () => {
-
-}
-const FooterLayout = () => {
-
-}
 const CustomerLayout = () => {
   const [isSearchBoxVisible, setSearchBoxVisible] = useState(false);
   const [isNotificationsVisible, setNotificationsVisible] = useState(false);

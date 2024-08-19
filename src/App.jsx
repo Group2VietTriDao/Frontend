@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import CustomerLayout from "./layouts/CustomerLayout";
+import CustomerLayout from "./layouts/customer/CustomerLayout";
 import StaffLayout from "./layouts/StaffLayout";
 import GuardLayout from "./layouts/GuardLayout";
 import Login from "./pages/customer/Login";
@@ -29,6 +29,7 @@ import ManageContracts from "./pages/staff/ManageContracts";
 import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
 
 import NotFound from "./components/NotFound"; // Thêm component 404
+import ProtectedCustomerLayout from './layouts/customer/ProtectedCustomerLayout';
 
 function App() {
   return (
@@ -47,7 +48,14 @@ function App() {
             element={<ViewAndEditServiceRequirement />}
           />
           <Route path="reset-password" element={<ResetPassword />} />
+
           {/* <Route path="serviceRequirement" element={<ServiceRequirement />} /> */}
+        </Route>
+
+        <Route path='' element={<ProtectedCustomerLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
         </Route>
 
         {/* Guard */}

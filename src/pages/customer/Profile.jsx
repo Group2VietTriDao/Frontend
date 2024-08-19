@@ -69,9 +69,9 @@ const EditProfile = ({ setEdit }) => {
 }
 const Profile = () => {
   const [edit, setEdit] = useState(false)
-  const handleChangeViewProfile = () => [
+  const handleChangeViewProfile = () => {
     setEdit(true)
-  ]
+  }
   return (
     <>
       <div className='col-span-full md:col-span-3 flex items-center justify-center flex-col my-8'>
