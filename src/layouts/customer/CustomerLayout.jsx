@@ -136,8 +136,8 @@ const CustomerLayout = () => {
   };
 
   return (
-    <div className={style.customerLayout}>
-      <header className={style.header}>
+    <div className={`${style.customerLayout} relative`}>
+      <header className={`${style.header} z-10`}>
         <div className={clsx(style.logo)}>
           <Link to="/" className={style.logoLink}>
             <img className={style.logoImg} src="/logo.png" alt="Logo" />

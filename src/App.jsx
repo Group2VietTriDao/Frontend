@@ -30,6 +30,8 @@ import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
 
 import NotFound from "./components/NotFound"; // Thêm component 404
 import ProtectedCustomerLayout from './layouts/customer/ProtectedCustomerLayout';
+import Contracts from './pages/customer/Contracts';
+import ServiceRequiment from './pages/customer/ServiceRequiment';
 
 function App() {
   return (
@@ -39,16 +41,13 @@ function App() {
         <Route path="/customer" element={<CustomerLayout />}>
           <Route path="profile" element={<Profile />} />
           <Route
-            path="newServiceRequirement"
-            element={<NewServiceRequirement />}
-          />
-          <Route
             path="viewAndEditServiceRequirement"
             element={<ViewAndEditServiceRequirement />}
           />
           <Route path="reset-password" element={<ResetPassword />} />
+          <Route path="contracts" element={<Contracts />} />
 
-          {/* <Route path="serviceRequirement" element={<ServiceRequirement />} /> */}
+          <Route path="service-requiment" element={<ServiceRequiment />} />
         </Route>
 
         <Route path='' element={<ProtectedCustomerLayout />}>
