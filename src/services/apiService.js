@@ -2,14 +2,24 @@ import axios from "axios";
 
 // Tạo một instance của axios với cấu hình cơ bản
 const api = axios.create({
-  baseURL: "https://api.example.com", // Thay đổi thành URL API của bạn
+  baseURL: "http:localhost:8888/api", // Thay đổi thành URL API của bạn
   timeout: 10000, // Thay đổi timeout nếu cần
 });
 
 // Các hàm để gọi API
-export const fetchData = async (endpoint) => {
+export const getData = async (endpoint) => {
   try {
     const response = await api.get(endpoint);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
+
+export const postData = async (endpoint) => {
+  try {
+    const response = await api.post(endpoint);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);

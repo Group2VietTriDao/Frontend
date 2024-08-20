@@ -1,12 +1,20 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import NewServiceRequirement from './NewServiceRequirement'
 import ViewAndEditServiceRequirement from './ViewAndEditServiceRequirement'
+import { getData } from '../../services/apiService'
 
 const ServiceRequiment = () => {
   const [showNewServive, setShowNewService] = useState(false)
   const [showServive, setShowService] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      // const data = await getData('/request/all')
+      // console.log(data)
+    })()
+  }, [])
   return (
     <>
       <div className='col-span-full md:col-span-3 flex items-center flex-col min-h-screen my-4'>

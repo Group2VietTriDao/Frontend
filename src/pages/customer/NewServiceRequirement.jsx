@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 
 import styles from "./style/newServiceRequirement.module.css";
+import { postData } from '../../services/apiService';
 
 const NewServiceRequirement = ({ setShowNewService }) => {
   const [formData, setFormData] = useState({
@@ -19,9 +20,9 @@ const NewServiceRequirement = ({ setShowNewService }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    await postData('/request/add')
   };
 
   return (

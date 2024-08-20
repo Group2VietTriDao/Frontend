@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import styles from "./style/ViewAndEditServiceRequirement.module.css";
+import { postData } from '../../services/apiService';
 
 const ViewAndEditServiceRequirement = ({ setShowService }) => {
   const [formData, setFormData] = useState({
@@ -20,9 +21,13 @@ const ViewAndEditServiceRequirement = ({ setShowService }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form đã gửi:", formData);
+    await postData('request/update', {
+      id: formData.id,
+      status: formData.status,
+
+    })
   };
 
   return (

@@ -1,10 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { postData } from '../../services/apiService'
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [passwordValue, setPasswordValue] = useState('')
+
+  const usernameRef = useRef()
+  const passwordRef = useRef()
+  const handleSubmit = () => {
+    postData('/user')
+  }
   return (
     <>
       <div className='flex justify-center items-center h-screen'>
@@ -16,7 +23,7 @@ const Login = () => {
                 <label htmlFor="username" className='text-sm text-[#424955] font-semibold capitalize'>User name</label>
                 <div className='flex items-center w-full bg-white rounded-md px-3 py-2 space-x-3'>
                   <FontAwesomeIcon icon="fa-regular fa-user" />
-                  <input className='w-full outline-none text-sm' type="text" id='username' name='username' placeholder='Enter Your user name' autoComplete />
+                  <input ref={usernameRef} className='w-full outline-none text-sm' type="text" id='username' name='username' placeholder='Enter Your user name' autoComplete />
                 </div>
               </div>
 
@@ -46,7 +53,9 @@ const Login = () => {
                 <Link to='/forgot-password' className='capitalize text-sm text-[#379AE6]'>forgot password ?</Link>
               </div>
 
-              <button className='bg-[#379AE6] flex justify-center items-center py-2 rounded-md text-white font-semibold hover:bg-[#1e88da]'>Login</button>
+              <button
+                onClick={handleSubmit}
+                className='bg-[#379AE6] flex justify-center items-center py-2 rounded-md text-white font-semibold hover:bg-[#1e88da]'>Login</button>
             </form>
             <span className='uppercase text-gray-500 font-semibold'>or</span>
             <div className='flex space-x-3'>
