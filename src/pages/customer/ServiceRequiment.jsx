@@ -4,15 +4,16 @@ import { Link } from 'react-router-dom'
 import NewServiceRequirement from './NewServiceRequirement'
 import ViewAndEditServiceRequirement from './ViewAndEditServiceRequirement'
 import { getData } from '../../services/apiService'
+import { format } from 'date-fns'
 
 const ServiceRequiment = () => {
   const [showNewServive, setShowNewService] = useState(false)
   const [showServive, setShowService] = useState(false)
-
+  const [data, setData] = useState([])
   useEffect(() => {
     (async () => {
       const data = await getData('/service-request/all')
-      console.log(data)
+      setData(data)
     })()
   }, [])
   return (
@@ -99,7 +100,7 @@ const ServiceRequiment = () => {
                         CATEGORIES
                       </th>
                       <th scope="col" className="px-4 py-2">
-                        Price
+                        Cost
                       </th>
                       <th scope="col" className="px-4 py-2">
                         Start Date
@@ -114,37 +115,39 @@ const ServiceRequiment = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="bg-gray-50 border-b border-gray-100 text-center">
-                      <td className="px-4 py-4">
-                        <input type="checkbox" name="checkbox" id="" autoComplete='' />
-                      </td>
-                      <td className="px-4 py-4">
-                        1
-                      </td>
-                      <td className="px-4 py-4">
-                        Incomplete
-                      </td>
-                      <td className="px-4 py-4">
-                        75
-                      </td>
-                      <td className="px-4 py-4">
-                        Personal Protection
-                      </td>
-                      <td className="px-4 py-4">
-                        $804
-                      </td>
-                      <td className="px-4 py-4">
-                        20/03/2024
-                      </td>
-                      <td className="px-4 py-4">
-                        20/03/2024
-                      </td>
-                      <td className="px-4 py-4">
-                        <Link
-                          onClick={() => setShowService(true)}
-                          to="" className="px-3 py-2 text-white bg-blue-500 hover:bg-[#1a7ae1] rounded-md">View</Link>
-                      </td>
-                    </tr>
+                    {data.length > 0 && data.map(data => (
+                      <tr className="bg-gray-50 border-b border-gray-100 text-center">
+                        <td className="px-4 py-4">
+                          <input type="checkbox" name="checkbox" id="" autoComplete='' />
+                        </td>
+                        <td className="px-4 py-4">
+                          {data.serviceRequest}
+                        </td>
+                        <td className="px-4 py-4">
+                          {data.status}
+                        </td>
+                        <td className="px-4 py-4">
+                          {data.numberOfGuards}
+                        </td>
+                        <td className="px-4 py-4">
+                          {data.serviceName}
+                        </td>
+                        <td className="px-4 py-4">
+                          {data.budget}
+                        </td>
+                        <td className="px-4 py-4">
+                          {format(data.startDate, 'ddMMYYYY')}
+                        </td>
+                        <td className="px-4 py-4">
+                          {format(data.endDate, 'ddMMYYYY')}
+                        </td>
+                        <td className="px-4 py-4">
+                          <Link
+                            onClick={() => setShowService(true)}
+                            to="" className="px-3 py-2 text-white bg-blue-500 hover:bg-[#1a7ae1] rounded-md">View</Link>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
