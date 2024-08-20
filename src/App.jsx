@@ -12,26 +12,18 @@ import ForgotPassword from "./pages/customer/ForgotPassword";
 import Home from "./pages/customer/Home";
 import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
-// import ServiceRequirement from "./pages/customer/ServiceRequirement";
-import NewServiceRequirement from "./pages/customer/NewServiceRequirement";
-import ViewAndEditServiceRequirement from "./pages/customer/ViewAndEditServiceRequirement";
-import Contract from "./pages/customer/Contracts";
-import ViewContract from "./pages/customer/ViewContract";
-import ViewTeamContract from "./pages/customer/ViewTeamContract";
+import ContractCustomer from "./pages/customer/Contracts";
 // guard
 import HomeGuard from "./pages/guard/Home";
 
 // staff
 import Dashboard from "./pages/staff/Dashboard";
-import StaffContract from "./pages/staff/Contract";
-import ContractAssign from "./pages/staff/ContractAssign";
-import ManageContracts from "./pages/staff/ManageContracts";
 import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
 
 import NotFound from "./components/NotFound"; // Thêm component 404
 import ProtectedCustomerLayout from './layouts/customer/ProtectedCustomerLayout';
-import Contracts from './pages/customer/Contracts';
 import ServiceRequiment from './pages/customer/ServiceRequiment';
+import Contract from './pages/staff/Contract';
 
 function App() {
   return (
@@ -40,13 +32,8 @@ function App() {
         {/* Customer */}
         <Route path="/customer" element={<CustomerLayout />}>
           <Route path="profile" element={<Profile />} />
-          <Route
-            path="viewAndEditServiceRequirement"
-            element={<ViewAndEditServiceRequirement />}
-          />
           <Route path="reset-password" element={<ResetPassword />} />
-          <Route path="contracts" element={<Contracts />} />
-
+          <Route path="contracts" element={<ContractCustomer />} />
           <Route path="service-requiment" element={<ServiceRequiment />} />
         </Route>
 
@@ -66,6 +53,7 @@ function App() {
         {/* Staff */}
         <Route path="/staff" element={<StaffLayout />}>
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="contracts" element={<Contract />} />
           <Route
             path="manageServiceRequests"
             element={<ManageServiceRequests />}
