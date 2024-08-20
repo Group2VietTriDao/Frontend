@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import CustomerLayout from "./layouts/CustomerLayout";
+import CustomerLayout from "./layouts/customer/CustomerLayout";
 import StaffLayout from "./layouts/StaffLayout";
 import GuardLayout from "./layouts/GuardLayout";
 import Login from "./pages/customer/Login";
@@ -29,6 +29,9 @@ import ManageContracts from "./pages/staff/ManageContracts";
 import ManageServiceRequests from "./pages/staff/ManageServiceRequests";
 
 import NotFound from "./components/NotFound"; // Thêm component 404
+import ProtectedCustomerLayout from './layouts/customer/ProtectedCustomerLayout';
+import Contracts from './pages/customer/Contracts';
+import ServiceRequiment from './pages/customer/ServiceRequiment';
 
 function App() {
   return (
@@ -36,18 +39,23 @@ function App() {
       <Routes>
         {/* Customer */}
         <Route path="/customer" element={<CustomerLayout />}>
-          <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
-          <Route
-            path="newServiceRequirement"
-            element={<NewServiceRequirement />}
-          />
           <Route
             path="viewAndEditServiceRequirement"
             element={<ViewAndEditServiceRequirement />}
           />
           <Route path="reset-password" element={<ResetPassword />} />
-          {/* <Route path="serviceRequirement" element={<ServiceRequirement />} /> */}
+          <Route path="contracts" element={<Contracts />} />
+
+          <Route path="service-requiment" element={<ServiceRequiment />} />
+        </Route>
+
+        <Route path='' element={<ProtectedCustomerLayout />}>
+          <Route path="" element={<Home />} />
+
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
+          <Route path="forgot-password" element={<ForgotPassword />} />
         </Route>
 
         {/* Guard */}
