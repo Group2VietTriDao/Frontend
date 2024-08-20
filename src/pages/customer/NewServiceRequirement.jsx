@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import styles from "./style/newServiceRequirement.module.css";
 
-const NewServiceRequirement = () => {
+const NewServiceRequirement = ({ setShowNewService }) => {
   const [formData, setFormData] = useState({
     category: "Personal Protection",
     numberOfGuards: "",
@@ -25,24 +25,11 @@ const NewServiceRequirement = () => {
   };
 
   return (
-    <div className={styles.NewServiceRequirement}>
-      <div className={styles.Profile}>
-        <div className={styles.userDetails}>
-          <img src="/avatar111.jpg" alt="User" className={styles.userImage} />
-          <div className={styles.userInfo}>
-            <h2>HuongPhan</h2>
-            <p>HuongPhan@gmail.com</p>
-          </div>
-        </div>
-        <div className={styles.serviceTitle}>
-          <h2>Service Requiment</h2>
-        </div>
-      </div>
-
-      <div className={styles.container}>
-        <form onSubmit={handleSubmit}>
-          <h3 className={styles.formTitle}>New Service Request</h3>
-          <div className={styles.formGroup}>
+    <div className={`absolute top-0 left-0 bottom-0 right-0 bg-gray-900/50 z-20`}>
+      <div className={`${styles.container} mx-auto overflow-auto`}>
+        <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-4'>
+          <h3 className={`${styles.formTitle} col-span-2`}>New Service Request</h3>
+          <div className={`${styles.formGroup} col-span-2`}>
             <label htmlFor="category" className={styles.label}>
               Categories Service Requiment
             </label>
@@ -135,7 +122,7 @@ const NewServiceRequirement = () => {
               className={styles.input}
             />
           </div>
-          <div className={styles.formGroup}>
+          <div className={`${styles.formGroup} col-span-2`}>
             <label htmlFor="note" className={styles.label}>
               Note
             </label>
@@ -147,8 +134,8 @@ const NewServiceRequirement = () => {
               className={styles.textarea}
             />
           </div>
-          <div className={styles.formActions}>
-            <button type="button" className={styles.goBackButton}>
+          <div className={`${styles.formActions} col-span-2`}>
+            <button onClick={() => setShowNewService(false)} type="button" className={styles.goBackButton}>
               Go back
             </button>
             <button type="submit" className={styles.submitButton}>
@@ -157,7 +144,7 @@ const NewServiceRequirement = () => {
           </div>
         </form>
       </div>
-    </div>
+    </div >
   );
 };
 
