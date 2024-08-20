@@ -1,0 +1,113 @@
+  .NewServiceRequirement{
+    width: 300%;
+  }
+  
+  .Profile {
+    max-width: 600px;
+    margin-top: 65px;
+    margin-left: 10%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .userDetails {
+    display: flex; 
+    align-items: center;
+  }
+  
+  .userInfo {
+    text-align: left;
+    margin-left: 20px; 
+  }
+  
+  .userImage {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    flex-shrink: 0; 
+  }
+  
+  .userInfo h2, .userInfo p {
+    margin: 0; 
+  }
+  .userInfo h2{
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+ 
+  .serviceTitle {
+    text-align: left;
+    margin-top: 20px; 
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  
+  .container{
+    max-width: 800px;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .formTitle {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  
+  .formGroup {
+    margin-bottom: 15px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .formActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .goBackButton {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitButton:hover {
+    background-color: #0056b3;
+  }
+  
+  .goBackButton:hover {
+    background-color: #999;
+  }
+  

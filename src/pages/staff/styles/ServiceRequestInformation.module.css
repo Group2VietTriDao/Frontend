@@ -1,0 +1,91 @@
+/* View Request */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modalTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bolder;
+  }
+  
+  .modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .formRow {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa label và input */
+  }
+  
+  .formRow label {
+    flex-basis: 20%; /* Độ rộng của label */
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .formRow input,
+  .formRow textarea {
+    flex-basis: 70%; /* Độ rộng của input */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .formRow textarea {
+    resize: none;
+    height: 50px;
+  }
+  
+  .modalActions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .modalActions button {
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modalActions button:first-child {
+    background-color: #e1dddd;
+    color: #000;
+  }
+  .modalActions button:first-child:hover{
+    background-color: #afaeae;
+  }
+  
+  .createButton {
+    background-color: #fc6544;
+    color: #fff;
+  }
+  
+  .createButton:hover {
+    background-color: #9f4b39;
+  }
+  
