@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const Header = () => {
   return (
     <>
-      <header className={style.header}>
+      <header className={clsx(style.header, 'z-50')}>
         <div className={clsx(style.logo)}>
           <Link to="/" className={style.logoLink}>
             <img className={style.logoImg} src="/logo.png" alt="Logo" />
