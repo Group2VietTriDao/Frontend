@@ -2,8 +2,7 @@ import axios from "axios";
 
 // Tạo một instance của axios với cấu hình cơ bản
 const api = axios.create({
-  baseURL: "http:localhost:8888/api", // Thay đổi thành URL API của bạn
-  timeout: 10000, // Thay đổi timeout nếu cần
+  baseURL: "http://localhost:8888/api", // Thay đổi thành URL API của bạn
 });
 
 // Các hàm để gọi API

@@ -11,8 +11,8 @@ const ServiceRequiment = () => {
 
   useEffect(() => {
     (async () => {
-      // const data = await getData('/request/all')
-      // console.log(data)
+      const data = await getData('/service-request/all')
+      console.log(data)
     })()
   }, [])
   return (
