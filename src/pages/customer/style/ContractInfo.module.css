@@ -1,0 +1,191 @@
+/* Container chính */
+
+.contractContainer {
+    display: flex;
+    height: 100vh;
+
+    grid-column: span 3;
+}
+
+/* Sidebar bên trái */
+.sidebar {
+    width: 250px;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+/* Hồ sơ người dùng */
+.profile {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profileImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.profileName {
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.profileEmail {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Menu Sidebar */
+.sidebarMenu {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebarMenuItem {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.sidebarMenuItem:hover {
+    background-color: #e9ecef;
+}
+
+.sidebarMenuItemActive {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Đếm thông báo */
+.notificationCount {
+    background-color: red;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+/* Nội dung hợp đồng */
+.contractContent {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff;
+    overflow-y: auto;
+}
+
+/* Header của hợp đồng */
+.contractHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.pdfButton {
+    background-color: #ffc107;
+    border: none;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pdfButton:hover {
+    background-color: #e0a800;
+}
+
+/* Chi tiết hợp đồng */
+.contractDetails {
+    display: grid;
+    gap: 20px;
+}
+
+/* Lưới đội ngũ */
+.teamGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* Thẻ thông tin đội ngũ */
+.teamCard {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.teamCardImg {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.viewProfileButton {
+    background-color: #e3f2fd;
+    border: none;
+    padding: 8px 12px;
+    color: #007bff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.viewProfileButton:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.paginationButton {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.paginationButton:hover {
+    background-color: #e9ecef;
+}
+
+.paginationActive {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Nút quay lại */
+.goBackButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.goBackButton:hover {
+    background-color: #5a6268;
+}
