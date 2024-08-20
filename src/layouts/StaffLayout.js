@@ -22,7 +22,7 @@ const StaffLayout = () => {
           <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ""}`}>
             <a href="#">Dashboard</a>
             <a href="#">Employees Management</a>
-            <a href="#">Service Requests</a>
+            <a href="/staff/ManageServiceRequests">Service Requests</a>
             <a href="#">Contracts</a>
             <a href="#">Assign Security Guards</a>
             <a href="#">Attendance</a>
