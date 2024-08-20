@@ -37,7 +37,6 @@ function App() {
       <Routes>
         {/* Customer */}
         <Route path="/customer" element={<CustomerLayout />}>
-          <Route path="home" element={<Home />} />
           <Route path="profile" element={<Profile />} />
           <Route
             path="newServiceRequirement"
@@ -53,6 +52,8 @@ function App() {
         </Route>
 
         <Route path='' element={<ProtectedCustomerLayout />}>
+          <Route path="" element={<Home />} />
+
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
