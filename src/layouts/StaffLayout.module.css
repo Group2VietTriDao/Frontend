@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 56px;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -52,7 +52,7 @@
     margin: 0 10px;
     color: white;
     text-decoration: none;
-    padding: 10px 15px;
+    padding: 10px 10px;
     transition: background-color 0.1s, color 0.1s;
 }
 
