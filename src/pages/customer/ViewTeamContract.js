@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './style/ContractInfo.module.css';
+import ViewProfileGuardContract from './ViewProfileGuardContract'; // Import component
 
 const teamMembers = [
     { name: 'Nguyễn Văn A', role: 'Guard Manager', image: '/images/(1).jpg' },
@@ -12,14 +13,20 @@ const teamMembers = [
 ];
 
 const ViewTeamContract = () => {
-    const handleButtonClick = (action) => {
-        alert(`Button ${action} clicked!`);
-        // Thêm logic xử lý sự kiện click tại đây
+    const [showProfileContract, setShowProfileContract] = useState(false);
+    const [selectedMember, setSelectedMember] = useState(null);
+
+    const handleButtonClick = (member) => {
+        setSelectedMember(member);  // Set the selected member
+        setShowProfileContract(true); // Show the modal
+    };
+
+    const handleCloseProfileContract = () => {
+        setShowProfileContract(false); // Hide the modal
     };
 
     return (
         <div className={styles.contractContainer}>
-            
             <div className={styles.contractContent}>
                 {/* Profile User Section */}
                 <div className={styles.userProfileHeader}>
@@ -58,7 +65,10 @@ const ViewTeamContract = () => {
                                 <img src={member.image} alt={member.name} className={styles.teamCardImg} />
                                 <h4>{member.name}</h4>
                                 <p>{member.role}</p>
-                                <button className={styles.viewProfileButton} onClick={() => handleButtonClick('View Profile')}>
+                                <button 
+                                    className={styles.viewProfileButton} 
+                                    onClick={() => handleButtonClick(member)}
+                                >
                                     View profile
                                 </button>
                             </div>
@@ -78,6 +88,15 @@ const ViewTeamContract = () => {
 
                 <button className={styles.goBackButton}>Go back</button>
             </div>
+
+            {/* Hiển thị modal ViewProfileGuardContract */}
+            {showProfileContract && (
+                <ViewProfileGuardContract 
+                    show={showProfileContract} 
+                    handleClose={handleCloseProfileContract} 
+                    member={selectedMember} // Truyền dữ liệu của member được chọn
+                />
+            )}
         </div>
     );
 };
