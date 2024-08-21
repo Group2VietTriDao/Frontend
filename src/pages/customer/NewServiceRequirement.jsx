@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import clsx from "clsx";
 
 import styles from "./style/newServiceRequirement.module.css";
@@ -20,9 +20,25 @@ const NewServiceRequirement = ({ setShowNewService }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const splitDate = useCallback((date) => {
+    return date.split('-')
+  }, [formData.date])
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await postData('/request/add')
+    if (formData.category && formData.cost && formData.date && formData.email && formData.note && formData.phone && formData.numberOfGuards)
+      return
+    // await postData('/service-request/add', {
+    //   phone: formData.phone,
+    //   email: formData.email,
+    //   budget: formData.cost,
+    //   address: formData.address,
+    //   note: formData.note,
+    //   numberOfGuards: Number(formData.numberOfGuards),
+    //   status: formData.category,
+    //   startDate: splitDate(formData.date)[0].trim(),
+    //   endDate: splitDate(formData.date)[1].trim(),
+    // })
+    setShowNewService(false)
   };
 
   return (

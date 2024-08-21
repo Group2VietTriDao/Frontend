@@ -70,7 +70,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-1 space-y-6 lg:space-x-0 text-center lg:text-start lg:grid-cols-3 gap-12 py-4'>
+          <div className='grid grid-cols-1 space-y-6 lg:space-y-0 text-center lg:text-start lg:grid-cols-3 gap-12 py-4'>
             <Contact
               button='contact us'
               link=''

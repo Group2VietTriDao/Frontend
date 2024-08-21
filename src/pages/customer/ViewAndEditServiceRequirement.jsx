@@ -23,11 +23,11 @@ const ViewAndEditServiceRequirement = ({ setShowService }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await postData('request/update', {
-      id: formData.id,
-      status: formData.status,
+    // await postData('request/update', {
+    //   id: formData.id,
+    //   status: formData.status,
 
-    })
+    // })
   };
 
   return (
@@ -149,8 +149,8 @@ const ViewAndEditServiceRequirement = ({ setShowService }) => {
               type="button" className={styles.goBackButton}>
               Go back
             </button>
-            <button type="submit" className={styles.submitButton}>
-              Save
+            <button hidden type="submit" className={styles.submitButton}>
+
             </button>
           </div>
         </form>

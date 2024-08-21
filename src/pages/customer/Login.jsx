@@ -10,7 +10,7 @@ const Login = () => {
   const usernameRef = useRef()
   const passwordRef = useRef()
   const handleSubmit = () => {
-    postData('/user')
+    // postData('/user')
   }
   return (
     <>
@@ -69,7 +69,7 @@ const Login = () => {
                 <FontAwesomeIcon icon="fa-brands fa-apple" />
               </div>
             </div>
-            <span className='text-sm'>Not Registered ? <Link to='signup' className='text-[#379AE6] capitalize font-semibold'>Sign Up</Link></span>
+            <span className='text-sm'>Not Registered ? <Link to='/signup' className='text-[#379AE6] capitalize font-semibold'>Sign Up</Link></span>
           </div>
         </div>
       </div>

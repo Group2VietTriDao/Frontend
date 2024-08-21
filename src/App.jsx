@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import CustomerLayout from "./layouts/customer/CustomerLayout";
 import StaffLayout from "./layouts/StaffLayout";
-import GuardLayout from "./layouts/GuardLayout";
 import Login from "./pages/customer/Login";
 import SignUp from "./pages/customer/SignUp";
 import ForgotPassword from "./pages/customer/ForgotPassword";
@@ -13,8 +12,6 @@ import Home from "./pages/customer/Home";
 import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
 import ContractCustomer from "./pages/customer/Contracts";
-// guard
-import HomeGuard from "./pages/guard/Home";
 
 // staff
 import Dashboard from "./pages/staff/Dashboard";
@@ -43,11 +40,6 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
           <Route path="forgot-password" element={<ForgotPassword />} />
-        </Route>
-
-        {/* Guard */}
-        <Route path="/guard" element={<GuardLayout />}>
-          <Route path="home" element={<HomeGuard />} />
         </Route>
 
         {/* Staff */}
