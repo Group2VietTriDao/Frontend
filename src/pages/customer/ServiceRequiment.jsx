@@ -15,7 +15,6 @@ const ServiceRequiment = () => {
     (async () => {
       // const data = await getData('/service-request/all')
       // setData(data)
-      // setLoad(load => !load)
     })()
   }, [load])
   return (
