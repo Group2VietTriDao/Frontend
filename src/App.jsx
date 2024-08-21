@@ -12,6 +12,8 @@ import Home from "./pages/customer/Home";
 import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
 import ContractCustomer from "./pages/customer/Contracts";
+import ViewTeamContract from "./pages/customer/ViewTeamContract";
+
 
 // staff
 import Dashboard from "./pages/staff/Dashboard";
@@ -31,6 +33,7 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="contracts" element={<ContractCustomer />} />
+          <Route path="ViewTeamContract" element={<ViewTeamContract/>} />
           <Route path="service-requiment" element={<ServiceRequiment />} />
         </Route>
 
