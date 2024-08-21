@@ -13,6 +13,7 @@ import Profile from "./pages/customer/Profile";
 import ResetPassword from "./pages/customer/ResetPassword";
 import ContractCustomer from "./pages/customer/Contracts";
 import ViewTeamContract from "./pages/customer/ViewTeamContract";
+import ViewProfileGuardContract from "./pages/customer/ViewProfileGuardContract";
 
 
 // staff
@@ -33,7 +34,8 @@ function App() {
           <Route path="profile" element={<Profile />} />
           <Route path="reset-password" element={<ResetPassword />} />
           <Route path="contracts" element={<ContractCustomer />} />
-          <Route path="ViewTeamContract" element={<ViewTeamContract/>} />
+          <Route path="ViewTeamContract" element={<ViewTeamContract/>} 
+          <Route path="ViewProfileGuardContract" element={<ViewProfileGuardContract/>} />
           <Route path="service-requiment" element={<ServiceRequiment />} />
         </Route>
 
