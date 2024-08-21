@@ -10,12 +10,14 @@ const ServiceRequiment = () => {
   const [showNewServive, setShowNewService] = useState(false)
   const [showServive, setShowService] = useState(false)
   const [data, setData] = useState([])
+  const [load, setLoad] = useState()
   useEffect(() => {
     (async () => {
       // const data = await getData('/service-request/all')
       // setData(data)
+      // setLoad(load => !load)
     })()
-  }, [])
+  }, [load])
   return (
     <>
       <div className='col-span-full md:col-span-3 flex items-center flex-col min-h-screen my-4'>
@@ -191,7 +193,7 @@ const ServiceRequiment = () => {
         </div>
       </div>
       {showNewServive && (
-        <NewServiceRequirement setShowNewService={setShowNewService} />
+        <NewServiceRequirement setLoad={setLoad} setShowNewService={setShowNewService} />
       )}
       {showServive && (
         <ViewAndEditServiceRequirement setShowService={setShowService} />

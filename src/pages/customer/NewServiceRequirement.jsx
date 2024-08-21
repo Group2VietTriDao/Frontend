@@ -2,9 +2,8 @@ import React, { useCallback, useState } from "react";
 import clsx from "clsx";
 
 import styles from "./style/newServiceRequirement.module.css";
-import { postData } from '../../services/apiService';
 
-const NewServiceRequirement = ({ setShowNewService }) => {
+const NewServiceRequirement = ({ setShowNewService, setLoad }) => {
   const [formData, setFormData] = useState({
     category: "Personal Protection",
     numberOfGuards: "",
@@ -38,6 +37,7 @@ const NewServiceRequirement = ({ setShowNewService }) => {
     //   startDate: splitDate(formData.date)[0].trim(),
     //   endDate: splitDate(formData.date)[1].trim(),
     // })
+    setLoad(true)
     setShowNewService(false)
   };
 
